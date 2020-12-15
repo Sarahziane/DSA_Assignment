@@ -172,7 +172,7 @@ namespace DSA_Assignment
                          
                         case 5:
 
-                        RemoveLast(CustomDataList);
+                        RemoveLast_(CustomDataList);
 
                         break;
 
