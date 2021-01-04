@@ -55,7 +55,7 @@ namespace DSA_Assignment
         }
      
         public Student ()
-        {
+        { 
 
         }
         public Student(string firstName, string lastName, string studentNumber, float averageScore)
