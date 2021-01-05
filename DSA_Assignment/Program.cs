@@ -198,10 +198,10 @@ namespace DSA_Assignment
                     }
                 }
             }
-
+            Console.WriteLine("Students sorted by first names (ascending) :");
             foreach (Student item in sortedtab)
             {
-                Console.WriteLine("Students sorted by first names\n------------------------------------------------------------");
+                Console.WriteLine("------------------------------------------------------------");
 
                 Console.WriteLine(" " + item.FirstName + " " + item.LastName + ",  Student Number : " + item.StudentNumber + ",  Average Score : " + item.AverageScore);
             }
@@ -231,15 +231,16 @@ namespace DSA_Assignment
                     }
                 }
             }
+            Console.WriteLine("Students sorted by last names (ascending) :");
 
             foreach (Student item in sortedtab)
             {
-                Console.WriteLine("Students sorted by last names\n------------------------------------------------------------");
+                Console.WriteLine("------------------------------------------------------------");
 
                 Console.WriteLine(" " + item.FirstName + " " + item.LastName + ",  Student Number : " + item.StudentNumber + ",  Average Score : " + item.AverageScore);
             }
         }
-        public static void Sort_Ascending_Student_Number(LinkedList<Student> list)
+        public static void Sort_Ascending_Score(LinkedList<Student> list)
         {
             Student[] tab = new Student[list.Count];
             float[] floattab = new float[list.Count];
@@ -264,14 +265,49 @@ namespace DSA_Assignment
                     }
                 }
             }
+            Console.WriteLine("Students sorted by their average scores (ascending) : ");
 
             foreach (Student item in sortedtab)
             {
-                Console.WriteLine("Students sorted by first names (ascending)\n------------------------------------------------------------");
+                Console.WriteLine("------------------------------------------------------------");
 
                 Console.WriteLine(" " + item.FirstName + " " + item.LastName + ",  Student Number : " + item.StudentNumber + ",  Average Score : " + item.AverageScore);
             }
         }
+        public static void Sort_Ascending_Student_Number(LinkedList<Student> list)
+        {
+            Student[] tab = new Student[list.Count];
+            string[] stringtab = new string[list.Count];
+
+            list.CopyTo(tab, 0); // transfers the list data to a tab, to go through the table and search for an index
+
+            for (int i = 0; i < tab.Length; i++)
+            {
+                stringtab[i] = tab[i].StudentNumber;
+            }
+
+            Array.Sort(stringtab);
+
+            Student[] sortedtab = new Student[list.Count];
+            for (int i = 0; i < stringtab.Length; i++)
+            {
+                for (int j = 0; j < sortedtab.Length; j++)
+                {
+                    if (stringtab[i] == tab[j].StudentNumber)
+                    {
+                        sortedtab[i] = tab[j];
+                    }
+                }
+            }
+            Console.WriteLine("Students sorted by student numbers (ascending) :");
+            foreach (Student item in sortedtab)
+            {
+                Console.WriteLine("------------------------------------------------------------");
+
+                Console.WriteLine(" " + item.FirstName + " " + item.LastName + ",  Student Number : " + item.StudentNumber + ",  Average Score : " + item.AverageScore);
+            }
+        }
+
         public static void Sort_Descending_First_Name(LinkedList<Student> list)
         {
             Student[] tab = new Student[list.Count];
@@ -298,10 +334,10 @@ namespace DSA_Assignment
                     }
                 }
             }
-
+            Console.WriteLine("Students sorted by first names (descending) : ");
             foreach (Student item in sortedtab)
             {
-                Console.WriteLine("Students sorted by first names (descending)\n------------------------------------------------------------");
+                Console.WriteLine("------------------------------------------------------------");
 
                 Console.WriteLine(" " + item.FirstName + " " + item.LastName + ",  Student Number : " + item.StudentNumber + ",  Average Score : " + item.AverageScore);
             }
@@ -333,15 +369,16 @@ namespace DSA_Assignment
                     }
                 }
             }
+            Console.WriteLine("Students sorted by last names (descending) : ");
 
             foreach (Student item in sortedtab)
             {
-                Console.WriteLine("Students sorted by last names (descending)\n------------------------------------------------------------");
+                Console.WriteLine("------------------------------------------------------------");
 
                 Console.WriteLine(" " + item.FirstName + " " + item.LastName + ",  Student Number : " + item.StudentNumber + ",  Average Score : " + item.AverageScore);
             }
         }
-        public static void Sort_Descending_Student_Number(LinkedList<Student> list)
+        public static void Sort_Descending_Score(LinkedList<Student> list)
         {
             Student[] tab = new Student[list.Count];
             float[] floattab = new float[list.Count];
@@ -367,16 +404,53 @@ namespace DSA_Assignment
                     }
                 }
             }
+            Console.WriteLine("Students sorted by their average scores (descending) : ");
 
             foreach (Student item in sortedtab)
             {
-                Console.WriteLine("Students sorted by their average score (descending)\n------------------------------------------------------------");
+                Console.WriteLine("\n------------------------------------------------------------");
 
                 Console.WriteLine(" " + item.FirstName + " " + item.LastName + ",  Student Number : " + item.StudentNumber + ",  Average Score : " + item.AverageScore);
             }
         }
 
 
+        public static void Sort_Descending_Student_Number(LinkedList<Student> list)
+        {
+
+            Student[] tab = new Student[list.Count];
+            string[] stringtab = new string[list.Count];
+
+            list.CopyTo(tab, 0); // transfers the list data to a tab, to go through the table and search for an index
+
+            for (int i = 0; i < tab.Length; i++)
+            {
+                stringtab[i] = tab[i].StudentNumber;
+            }
+
+            Array.Sort(stringtab);
+
+            Student[] sortedtab = new Student[list.Count];
+
+            for (int i = 0; i < stringtab.Length; i++)
+            {
+                for (int j = 0; j < sortedtab.Length; j++)
+                {
+                    if (stringtab[i] == tab[j].StudentNumber)
+                    {
+                        sortedtab[sortedtab.Length - 1 - i] = tab[j];
+                    }
+                }
+            }
+            Console.WriteLine("Students sorted by student numbers (descending) : ");
+
+            foreach (Student item in sortedtab)
+            {
+                Console.WriteLine("------------------------------------------------------------");
+
+                Console.WriteLine(" " + item.FirstName + " " + item.LastName + ",  Student Number : " + item.StudentNumber + ",  Average Score : " + item.AverageScore);
+            }
+        }
 
 
 
@@ -395,21 +469,24 @@ namespace DSA_Assignment
                                        + "\n 5 : Remove last element"
                                        + "\n 6 : Display list\n\n"
 
+                                       + "\n 7 : Get min element (based on average scores) "
+                                       + "\n 8 : Get max element (based on average score) "
 
-                                                                                             + "\n 7 : Get min element (based on average scores) "
-                                                                             + "\n 8 : Get max element (based on average score) "
-                               + "\n\n 9 : Ascending : Sort by last names "
-                        + "\n 10 : Ascending : Sort by last names "
-                                                                              + "\n 11 : Ascending : Sort by average scores "
-                                                                                   + "\n\n 12 : Descending : Sort by first names "
-                                                                              + "\n 13 : Descending : Sort by last names "
-                                                                              + "\n 14 : Descending : Sort by average scores"
+                                       + "\n\n 9 : Ascending : Sort by last names "
+                                       + "\n 10 : Ascending : Sort by last names "
+                                       + "\n 11 : Ascending : Sort by average scores "
+                                      + "\n 12 : Ascending : Sort by student numbers"
+
+                                       + "\n\n 13 : Descending : Sort by first names "
+                                       + "\n 14 : Descending : Sort by last names "
+                                       + "\n 15 : Descending : Sort by average scores"
+                                       + "\n 16 : Descending : Sort by student numbers"
 
 
 
 
 
-                                       + "\n *The custom data list doesn't change until the user quits the interface*"
+                                       + "\n\n *The custom data list doesn't change until the user quits the interface*"
                                        
 
                                        + "\n\n Please choose : ");
@@ -471,22 +548,31 @@ namespace DSA_Assignment
                         Sort_Ascending_Last_Name(CustomDataList);
                         break;
                     case 11:
-                        Sort_Ascending_Student_Number(CustomDataList);
+                        Sort_Ascending_Score(CustomDataList);
                         break;
                     case 12:
-                        Sort_Descending_First_Name(CustomDataList);
+                        Sort_Ascending_Student_Number(CustomDataList);
                         break;
                     case 13:
-                        Sort_Descending_Last_Name(CustomDataList);
+                        Sort_Descending_First_Name(CustomDataList);
+
                         break;
                     case 14:
+                        Sort_Descending_Last_Name(CustomDataList);
+
+                        break;
+                    case 15:
+                        Sort_Descending_Score(CustomDataList);
+
+                        break;
+                    case 16:
                         Sort_Descending_Student_Number(CustomDataList);
                         break;
 
 
 
-                    }
-                    Console.WriteLine("\nPress enter to go back to the menu and continue ");
+                }
+                Console.WriteLine("\nPress enter to go back to the menu and continue ");
                     cki = Console.ReadKey();
                 } while (cki.Key != ConsoleKey.Escape);
                 Console.ReadKey();
